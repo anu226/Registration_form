@@ -51,6 +51,8 @@
             <input type="submit" value="Submit" class="btn">
         </form>
     </div>
+    <!-- go to cdn of sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
     <script type="text/javascript"> 
     const form = document.getElementById('form');
     const username = document.getElementById('username');
@@ -64,7 +66,29 @@
         event.preventDefault();
         validate();
     })
+
+    const sendData = (sRate, count) => {
+        if (sRate ===count){
+            alert ('registration successfull');
+            swal("Welcome! ", "Registration Successful", "success");//added from sweet alert
+        }
+    }
+
+    //sending data to database 
     //more email validate
+    ////we are defining it here as it is arrow function so arrow funct is strictly declared before calling it
+    const successMsg =() =>{
+        let formCon = document.getElementsByClassName('form-control');
+        var count = formCon.length - 1;
+        for (var i=0; i< formCon.length; i++){
+            if(formCon[i].className==="form-control success"){
+                var sRate = 0 + i;//counting kr rhe ki pancho hmare success hone chahiye issilye count kr rhe 
+                sendData(sRate, count);
+            }else{
+                return false;
+            }
+        }
+    }
     const isEmail=(emailVal) => {
         var atSymbol = emailVal.indexOf("@");
         if (atSymbol < 1)return false;
@@ -124,6 +148,9 @@
             setSuccessMsg(cpassword);
         }
 
+        successMsg();
+    }
+
         function setErrorMsg(input, errormsgs){
             const formControl = input.parentElement;//accessing parent div
             const small = formControl.querySelector('small');//inside that div selecting small tag
@@ -142,7 +169,7 @@
         
 
 
-    }
+    
 
     </script>
 

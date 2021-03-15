@@ -120,7 +120,12 @@ body{
 @media(max-width:2500px){
     .container{
         width:  calc(100vw - 65vw);
-        max-width: 100%;
+        /* max-width: 100%; */
+        margin-top: 10%;
+        margin-bottom:10% ;
+        /* height: 100vh; */
+        
+
     }
 }
 
