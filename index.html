@@ -99,6 +99,7 @@
         function setErrorMsg(input, errormsgs){
             const formControl = input.parentElement;//accessing parent div
             const small = formControl.querySelector('small');//inside that div selecting small tag
+            formControl.className = "form-control error";//it is adding a class in parent div named as error so that error in css gets activated 
             small.innerText = errormsgs;//changing the inner text
         }
 
