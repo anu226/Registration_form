@@ -83,7 +83,7 @@
         //validate username
         if(usernameVal === ""){
             setErrorMsg(username,'username cannot be blank');
-        }else if(username.length <=2){
+        }else if(usernameVal.length <=2){
             setErrorMsg(username,'username min 3 char');
         }else{
             setSuccessMsg(username);
@@ -92,16 +92,54 @@
         if(emailVal === ""){
             setErrorMsg(email,'email cannot be blank');
         }else if(!isEmail(emailVal)){
-            setErrorMsg(emailVal,'Not a valid Email');
+            setErrorMsg(email,'Not a valid Email');
         }else{
             setSuccessMsg(email);
         }
+
+        //validate phone 
+        if(phoneVal === ""){
+            setErrorMsg(phone,'phone cannot be blank');
+        }else if(phoneVal.length !=10){
+            setErrorMsg(phone,'min 10 digits are required');
+        }else{
+            setSuccessMsg(phone);
+        }
+
+        //validate password
+        if(passwordVal === ""){
+            setErrorMsg(password,'password cannot be blank');
+        }else if(passwordVal.length <=5){
+            setErrorMsg(password,'minimum 6 character');
+        }else{
+            setSuccessMsg(password);
+        }
+        
+        //validate password
+        if(cpasswordVal === ""){
+            setErrorMsg(cpassword,' confirm password cannot be blank');
+        }else if(cpasswordVal !=passwordVal){
+            setErrorMsg(cpassword,'password not matching ');
+        }else{
+            setSuccessMsg(cpassword);
+        }
+
         function setErrorMsg(input, errormsgs){
             const formControl = input.parentElement;//accessing parent div
             const small = formControl.querySelector('small');//inside that div selecting small tag
             formControl.className = "form-control error";//it is adding a class in parent div named as error so that error in css gets activated 
+            //that is if error ocurrs then our parent div would be like
+            //<div class="form-control error">
             small.innerText = errormsgs;//changing the inner text
         }
+        function setSuccessMsg(input){
+            const formControl = input.parentElement;//accessing parent div
+            formControl.className = "form-control success";//it is adding a class in parent div named as error so that error in css gets activated 
+            //that is if error ocurrs then our parent div would be like
+            //<div class="form-control error">
+            
+        }
+        
 
 
     }
